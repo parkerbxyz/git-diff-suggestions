@@ -54,9 +54,9 @@ export async function createReviewCommentsFromPatch({
         pull_number: pullRequest,
         body: `${commentBody}
 
-\`\`\`suggestion
+\`\`\`\`suggestion
 ${patch.added.lines.join('\n')}
-\`\`\`
+\`\`\`\`
 `,
         commit_id: commitId,
         path: patch.removed.file,
