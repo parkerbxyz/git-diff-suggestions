@@ -29,7 +29,7 @@ async function run(): Promise<void> {
   let gitDiffError = '';
 
   try {
-    await exec('git', ['diff', '-U0', '--color=never'], {
+    await exec('git', ['diff', '-U1', '--color=never'], {
       listeners: {
         stdout: (data: Buffer) => {
           gitDiff += data.toString();

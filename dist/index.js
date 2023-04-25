@@ -195,7 +195,7 @@ function run() {
         let gitDiff = '';
         let gitDiffError = '';
         try {
-            yield exec_1.exec('git', ['diff', '-U0', '--color=never'], {
+            yield exec_1.exec('git', ['diff', '-U1', '--color=never'], {
                 listeners: {
                     stdout: (data) => {
                         gitDiff += data.toString();
