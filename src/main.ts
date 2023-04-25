@@ -23,7 +23,7 @@ async function run(): Promise<void> {
   }
   const commentBody =
     core.getInput('message') ||
-    'Something magical has suggested this change for you';
+    'Something magical has suggested this change for you:';
 
   let gitDiff = '';
   let gitDiffError = '';

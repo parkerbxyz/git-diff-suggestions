@@ -52,7 +52,7 @@ export async function createReviewCommentsFromPatch({
         owner,
         repo,
         pull_number: pullRequest,
-        body: `${commentBody}:
+        body: `${commentBody}
 
 \`\`\`suggestion
 ${patch.added.lines.join('\n')}
