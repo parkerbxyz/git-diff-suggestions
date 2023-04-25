@@ -24,7 +24,7 @@ test('createReviewCommentsFromPatch does nothing with invalid git diff', async f
     octokit,
     owner: 'getsentry',
     repo: 'sentry',
-    commentBody: 'Magic',
+    commentBody: 'Magic:',
     gitDiff: 'git diff',
     pullRequest: 1337,
     commitId: '123',
@@ -40,7 +40,7 @@ test('createReviewCommentsFromPatch works', async function () {
     octokit,
     owner: 'getsentry',
     repo: 'sentry',
-    commentBody: 'Magic',
+    commentBody: 'Magic:',
     gitDiff: `diff --git a/src/sentry/static/sentry/app/views/alerts/utils/index.tsx b/src/sentry/static/sentry/app/views/alerts/utils/index.tsx
 index 5d7caa2267..bc109f7943 100644
 --- a/src/sentry/static/sentry/app/views/alerts/utils/index.tsx
@@ -68,7 +68,7 @@ index 5d7caa2267..bc109f7943 100644
   expect(octokit.pulls.createReviewComment).toHaveBeenCalledWith({
     body: `Magic:
 
-\`\`\`suggestion
+\`\`\`\`suggestion
   if (
     eventTypes.includes(EventTypes.DEFAULT
                          ) && eventTypes.includes(
@@ -76,7 +76,7 @@ index 5d7caa2267..bc109f7943 100644
   }
   else
     {
-\`\`\`
+\`\`\`\`
 `,
     commit_id: '123',
     line: 200,
