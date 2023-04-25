@@ -65,11 +65,11 @@ function createReviewCommentsFromPatch({ octokit, owner, repo, commentBody, gitD
                     owner,
                     repo,
                     pull_number: pullRequest,
-                    body: `${commentBody}:
+                    body: `${commentBody}
 
-\`\`\`suggestion
+\`\`\`\`suggestion
 ${patch.added.lines.join('\n')}
-\`\`\`
+\`\`\`\`
 `,
                     commit_id: commitId,
                     path: patch.removed.file,
@@ -191,7 +191,7 @@ function run() {
             return;
         }
         const commentBody = core.getInput('message') ||
-            'Something magical has suggested this change for you';
+            'Something magical has suggested this change for you:';
         let gitDiff = '';
         let gitDiffError = '';
         try {
@@ -230,7 +230,7 @@ function run() {
         // If we have a git diff, then it means that some linter/formatter has changed some files, so
         // we should fail the build
         if (!!gitDiff) {
-            core.setFailed(new Error('There were some changed files, please update your PR with the code review suggestions'));
+            core.setFailed(new Error('Changes found; please update your PR with the code review suggestions.'));
         }
     });
 }
